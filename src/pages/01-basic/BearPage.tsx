@@ -1,3 +1,4 @@
+import { useShallow } from 'zustand/shallow'
 import { WhiteCard } from '../../components'
 import { useBearStore } from '../../store'
 
@@ -12,6 +13,7 @@ export const BearPage = () => {
         <BlackBears />
         <PolarBears />
         <PandaBears />
+        <Bears />
       </div>
     </>
   )
@@ -70,6 +72,27 @@ export function PandaBears () {
         <span className='text-3xl mx-2 lg:mx-10'> {pandaBears} </span>
         <button onClick={() => increasePandaBearsPopulation(-1)}> -1</button>
       </div>
+    </WhiteCard>
+  )
+}
+
+export function Bears () {
+  const bears = useBearStore(useShallow(state => state.bears))
+  // Do nothing hace un rerender a pesar de que no cambia el estado, si queremos que no se renderice cuando tiene el mismo valor, podemos usar shallow
+  // const bears = useBearStore(state => state.bears, shallow)
+  const doNothing = useBearStore(state => state.doNothing)
+  const addBear = useBearStore(state => state.addBear)
+  const clearBears = useBearStore(state => state.clearBears)
+
+  return (
+    <WhiteCard>
+      <h2>Osos</h2>
+      <button onClick={addBear}>Add Bear</button>
+      <button onClick={clearBears}>Clear Bears</button>
+      <button onClick={doNothing}>Do nothing</button>
+      <pre>
+        {JSON.stringify(bears, null, 2)}
+      </pre>
     </WhiteCard>
   )
 }

@@ -1,8 +1,7 @@
 # React + TypeScript + Vite + Zustand + TailwindCSS + ReactRouterDom
 
-Este es un cascarón de proyecto, siéntete libre de usarlo para tus proyectos.
 
-<img src="https://github.com/Klerith/zustand-mini-curso/blob/main/public/screenshot.png?raw=true" alt="Dashboard Screenshot">
+[video](https://www.youtube.com/watch?v=VaxPL4HKcBU&list=PLCKuOXG0bPi02_By1fW2_Z_RA3UuDfwp2&index=18)
 
 
 
