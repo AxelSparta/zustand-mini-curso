@@ -1,7 +1,7 @@
 # React + TypeScript + Vite + Zustand + TailwindCSS + ReactRouterDom
 
 
-[video](https://www.youtube.com/watch?v=VaxPL4HKcBU&list=PLCKuOXG0bPi02_By1fW2_Z_RA3UuDfwp2&index=18)
+[video](https://www.youtube.com/watch?v=EXY9ChC2dZ0&list=PLCKuOXG0bPi02_By1fW2_Z_RA3UuDfwp2&index=21)
 
 
 
