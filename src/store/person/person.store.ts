@@ -1,5 +1,6 @@
 import { create, StateCreator } from 'zustand'
-import { createJSONStorage, persist, StateStorage } from 'zustand/middleware'
+import { devtools, persist } from 'zustand/middleware'
+import { customSessionStorage } from '../storages/session.storage'
 
 interface PersonState {
   firstName: string
@@ -11,21 +12,6 @@ interface Actions {
   setLastName: (value: string) => void
 }
 
-const customStorage: StateStorage = {
-  getItem: function (name: string): string | null | Promise<string | null> {
-    console.log(name, 'getItem called')
-    return null
-  },
-  setItem: function (name: string, value: string): unknown | Promise<unknown> {
-    console.log(name, 'setItem called with value:', value)
-    return null
-  },
-  removeItem: function (name: string): unknown | Promise<unknown> {
-    console.log(name, 'removeItem called')
-    return null
-  }
-}
-
 const storeAPI: StateCreator<PersonState & Actions> = set => ({
   firstName: '',
   lastName: '',
@@ -35,8 +21,10 @@ const storeAPI: StateCreator<PersonState & Actions> = set => ({
 })
 
 export const usePersonStore = create<PersonState & Actions>()(
-  persist(storeAPI, {
-    name: 'person-storage', // unique name
-    storage: createJSONStorage(() => customStorage) // (optional) by default, 'localStorage' is used
-  })
+  devtools(
+    persist(storeAPI, {
+      name: 'person-storage', // unique name
+      storage: customSessionStorage // (optional) by default, 'localStorage' is used
+    })
+  )
 )
